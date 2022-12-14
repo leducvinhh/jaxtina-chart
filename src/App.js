@@ -1,8 +1,8 @@
-import { PolarChart } from "./components/PolarChart";
-import FormInput from "./components/Form";
-import "./app.css";
 import { useState } from "react";
+import "./app.css";
+import FormInput from "./components/Form";
 import { PieChart } from "./components/PieChart";
+import { PolarChart } from "./components/PolarChart";
 
 function App() {
   const [value, setValue] = useState([]);
