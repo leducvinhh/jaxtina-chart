@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { PolarChart } from "./components/PolarChart";
+import FormInput from "./components/Form";
+import "./app.css";
+import { useState } from "react";
+import { PieChart } from "./components/PieChart";
 
 function App() {
+  const [value, setValue] = useState([]);
+  const [showChart, setShowChart] = useState(false);
+
+  const handleRender = (value) => {
+    setValue(value);
+    setShowChart(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showChart ? (
+        <div className="inner">
+          <div className="charts">
+            <PolarChart value={value} />
+            <PieChart value={value} />
+          </div>
+        </div>
+      ) : (
+        <FormInput onRender={handleRender} />
+      )}
     </div>
   );
 }
